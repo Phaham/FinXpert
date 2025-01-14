@@ -15,7 +15,17 @@ import { kpis, products, transactions } from "./data/data.js";
 
 /* CONFIGURATIONS */
 dotenv.config();
-const app = express();
+const corsOptions = {
+  origin: [
+    "https://fin-xpert.vercel.app", // Frontend URL
+    "http://localhost:1337", // Local development URL (if needed)
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true, // Allow cookies if required
+};
+
+app.use(cors(corsOptions));
+
 app.use(cors());
 app.use(express.json());
 app.use(helmet());
