@@ -34,8 +34,7 @@
 
 Make sure you have the following installed on your machine:
 - **Node.js**: [Download Node.js](https://nodejs.org/)
-- **npm** (Node Package Manager) or **yarn**
-- **Python** (for Machine Learning models)
+- **npm** (Node Package Manager)
 
 ### Steps to Set Up Locally
 
