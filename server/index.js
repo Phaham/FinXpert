@@ -44,27 +44,48 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 /* ROUTES */
-app.get("/", (req, res) => {
-  res.send("Server is running");
-});
 app.use("/kpi", kpiRoutes);
 app.use("/product", productRoutes);
 app.use("/transaction", transactionRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
+const port = process.env.PORT || 4000;
+
+////////////////////
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+  // res.redirect("/");
+})
+
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("database connected!");
   })
-  .then(async () => {
-    app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
+  .catch((err) => {
+    console.log("error connecting to database", err);
+  });
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+///////////////////
+
+
+// mongoose
+//   .connect(process.env.MONGO_URL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(async () => {
+//     app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
 
 
     // await mongoose.connection.db.dropDatabase();
     // KPI.insertMany(kpis);
     // Product.insertMany(products);
     // Transaction.insertMany(transactions);
-  })
-  .catch((error) => console.log(`${error} did not connect`));
+
+  // })
+  // .catch((error) => console.log(`${error} did not connect`));
