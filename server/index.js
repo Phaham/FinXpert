@@ -49,7 +49,7 @@ app.use("/product", productRoutes);
 app.use("/transaction", transactionRoutes);
 
 /* MONGOOSE SETUP */
-const PORT = process.env.PORT || 9000;
+// const PORT = process.env.PORT || 9000;
 const port = process.env.PORT || 4000;
 
 ////////////////////
@@ -59,7 +59,7 @@ app.get('/', (req, res) => {
 })
 
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("database connected!");
   })
