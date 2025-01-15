@@ -18,7 +18,6 @@ dotenv.config();
 const corsOptions = {
   origin: [
 const allowedOrigins = [
-  "https://fin-xpert.vercel.app",
   "https://fin-xpert-5idc.vercel.app",
 ];
   ],
