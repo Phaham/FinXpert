@@ -15,6 +15,7 @@ import { kpis, products, transactions } from "./data/data.js";
 
 /* CONFIGURATIONS */
 dotenv.config();
+const app = express();
 const allowedOrigins = [
   "https://fin-xpert.vercel.app",
   "https://fin-xpert-5idc.vercel.app",
