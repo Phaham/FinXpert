@@ -16,24 +16,23 @@ import { kpis, products, transactions } from "./data/data.js";
 /* CONFIGURATIONS */
 dotenv.config();
 const app = express();
-const allowedOrigins = [
-  "https://fin-xpert.vercel.app",
-  "https://fin-xpert-5idc.vercel.app",
-];
+// const allowedOrigins = [
+//   "https://fin-xpert.vercel.app",
+// ];
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   credentials: true,
+// };
+// app.use(cors(corsOptions));
+app.use(cors);
 
 // app.use(cors());
 app.use(express.json());
