@@ -15,14 +15,21 @@ import { kpis, products, transactions } from "./data/data.js";
 
 /* CONFIGURATIONS */
 dotenv.config();
-const corsOptions = {
-  origin: [
 const allowedOrigins = [
+  "https://fin-xpert.vercel.app",
   "https://fin-xpert-5idc.vercel.app",
 ];
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true, // Allow cookies if required
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
