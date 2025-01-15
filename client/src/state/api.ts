@@ -6,7 +6,15 @@ import {
 } from "./types";
 
 export const api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
+  // baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: import.meta.env.VITE_BASE_URL,
+    prepareHeaders: (headers) => {
+      // Add the Access-Control-Allow-Origin header
+      headers.set("Access-Control-Allow-Origin", "*");
+      return headers;
+    },
+  }),
   reducerPath: "main",
   tagTypes: ["Kpis", "Products", "Transactions"],
   endpoints: (build) => ({
